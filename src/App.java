@@ -1,21 +1,22 @@
-import javax.swing.JOptionPane;
+import samples.InputSample01;
+import utilities.WotoVersion;
 
 public class App {
+	private static final String VERSION =
+	 "ver 0.0.1";
     public static void main(String[] args) throws Exception {
-		if (args == null) {
-			System.out.println("no arguments are provided!");
-			return;
-		} else if (args.length == 0) {
-			JOptionPane.showMessageDialog(null, "Onii-chan!");
-			throw new SomeException("tets");
+		var currentVer = new WotoVersion(VERSION);
+		var inpSample = new InputSample01(currentVer);
+		try {
+			inpSample.RunSample();
+		} catch (Exception e) {
+			System.out.println("an error is here: \n" + 
+			e.toString());
+			
+			System.exit(0x085);
 		}
-		var str = "args: ";
-		for (var current : args) {
-			str += "\n" + current;
-		}
-
-        System.out.println("Hello, World!" + str);
 		
+		System.exit(0x0);
     }
 
 	public static class SomeException extends Exception {
